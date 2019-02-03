@@ -1,0 +1,22 @@
+﻿@page
+@model NetCoreMVCIntermediate.Areas.SecurePages.Pages.Items.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<p>Enter customer name here:</p>
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <div><input asp-for="Customer.Name" /></div>
+    <span asp-validation-for="Customer.Name"></span>
+    <input type="submit" value="Add customer" />
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

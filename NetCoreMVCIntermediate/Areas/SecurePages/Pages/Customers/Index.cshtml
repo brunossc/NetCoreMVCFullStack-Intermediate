@@ -1,0 +1,43 @@
+﻿@page
+@model NetCoreMVCIntermediate.Areas.SecurePages.Pages.Items.IndexModel
+@using NetCoreMVCIntermediate.Model
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Items</h1>
+
+<form method="post">
+    <table class="table">
+        @if (Model.Customers != null && Model.Customers.Count() > 0)
+        {
+            <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>NotActive</th>
+            <th>Actions</th>
+            </thead>
+            <tbody>
+                @foreach (Customer customer in Model.Customers)
+                {
+                <tr>
+                    <td>@customer.Id</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.NotActive</td>
+                    <td><a asp-page="./Edit" asp-route-id="@customer.Id">Edit</a> | <a asp-page-handler="delete" asp-route-id="@customer.Id">Delete</a>  </td>
+                </tr>
+                }
+
+            </tbody>
+        }
+        else
+        {
+            <tr><td>Nothing found!!</td></tr>
+        }
+    </table>
+
+    <a asp-page="./Create">Create</a>
+
+</form>
+
